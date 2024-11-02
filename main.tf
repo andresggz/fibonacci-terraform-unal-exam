@@ -1,17 +1,14 @@
 # main.tf
 terraform {
-  required_version = ">= 1.0.0"
   required_providers {
-    null = {
-      source  = "hashicorp/null"
-      version = "~> 3.0"
+    local = {
+      source  = "hashicorp/local"
+      version = "2.5.1"
     }
   }
 }
 
-provider "null" {}
-
-resource "null_resource" "fibonacci" {
+resource "terraform_data" "fibonacci" {
   provisioner "local-exec" {
     command = <<EOT
       #!/bin/bash
